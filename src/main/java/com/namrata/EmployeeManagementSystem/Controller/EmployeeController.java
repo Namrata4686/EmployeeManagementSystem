@@ -81,28 +81,5 @@ public class EmployeeController {
 	public List<Employee> getEmployees(){
 		return er.findAll();
 	}
-	
-	@GetMapping(path = "/deleteEmployee/{id}")
-	public String deleteEmployee(@PathVariable Integer id){
-		Optional<Employee> emp=er.findById(id);
-		  if(emp.isPresent()) {
-		 er.deleteById(id);
-		 String s="Employee with id = "+id+" are Deleted";
-		 return s;
-		  }
-		  else
-		  {
-			  String s="Employee does not exists in the database";
-			  return s;
-		  }
-	}
-	
-	@GetMapping(path = "/deleteallEmployees")
-	public String deleteEmployees(){
-		 er.deleteAll();
-		 String s="All Employees are Deleted";
-		 return s;
-	}
-
     
 }
